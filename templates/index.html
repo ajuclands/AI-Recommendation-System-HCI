@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Movie Recommendation System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎬 AI Movie Recommendation System</h1>
+
+<p>Find movies similar to your favorites</p>
+
+<form action="/recommend" method="post" class="search-box">
+
+<input type="text" name="movie" placeholder="Enter movie name..." required>
+
+<select name="genre">
+<option value="">All Genres</option>
+<option value="Action">Action</option>
+<option value="Romance">Romance</option>
+<option value="Animation">Animation</option>
+<option value="Sci-Fi">Sci-Fi</option>
+</select>
+
+<button type="submit">Recommend</button>
+
+</form>
+
+<h2>🔥 Top Rated Movies</h2>
+
+<div class="cards">
+
+{% for movie in top_movies %}
+
+<div class="card">
+
+<img src="{{ movie.poster_url }}">
+
+<h3>{{ movie.movie }}</h3>
+
+<p>⭐ {{ movie.rating }}/10</p>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+
+</html>
